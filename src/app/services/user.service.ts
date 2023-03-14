@@ -12,19 +12,19 @@ export class UserService {
 
   usercreat(data:any): Observable<any>
    {
-    return this._http.post("http://localhost:3000/user",data)
+    return this._http.post("http://localhost:7000/api/users",data)
   }
   useredit(id:number,data:any): Observable<any>
    {
-    return this._http.put("http://localhost:3000/user/"+id,data)
+    return this._http.put("http://localhost:7000/api/users/"+id,data)
   }
 
   userlist(): Observable<any>{
-    return this._http.get("http://localhost:3000/user")
+    return this._http.get("http://localhost:7000/api/users")
   }
 
   deletUser(id:number): Observable<any>{
-    return this._http.delete("http://localhost:3000/user/"+id)
+    return this._http.delete("http://localhost:7000/api/users/"+id)
   }
 
   openSnackBar(message: string, action: string) {

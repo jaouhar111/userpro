@@ -25,19 +25,20 @@ export class AddEditComponent implements OnInit {
     dateN:'',
     email:'',
     genre:'',
-    adress:'',
+    adresse:'',
     ville:''
     })
   }
   formsubmit(){
    if (this.userForm.valid) {
+    console.log(this.userForm.value);
+    
     if (this.data) {
-      this._user.useredit(this.data.id,this.userForm.value).subscribe({
+      this._user.useredit(this.data._id,this.userForm.value).subscribe({
         next:(val:any)=>{
-        console.log(this.userForm);
-        let userName = this.userForm.controls['nom'].value
-        //alert ('user '+userName+ ' est ajouter');
-        this._user.openSnackBar('user '+userName+ ' est Editer','done');
+        console.log(this.data);
+        
+        this._user.openSnackBar('user est Editer','done');
           this._dialog.close(true)
          
           
@@ -51,9 +52,10 @@ export class AddEditComponent implements OnInit {
     } else {
       this._user.usercreat(this.userForm.value).subscribe({
         next:(val:any)=>{
-        console.log(this.userForm);
+        
         let userName = this.userForm.controls['nom'].value
-        //alert ('user '+userName+ ' est ajouter');
+       console.log(userName);
+       
         this._user.openSnackBar('user '+userName+ ' est ajouter','done')
           this._dialog.close(true)
           
